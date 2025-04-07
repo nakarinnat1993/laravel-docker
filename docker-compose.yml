@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel-docker
+    volumes:
+      - .:/var/www
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    networks:
+      - laravel
+
+networks:
+  laravel:
