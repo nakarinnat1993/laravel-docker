@@ -45,24 +45,26 @@ DB_PASSWORD=root
 🧠 On Linux, use 172.17.0.1 instead of host.docker.internal
 
 
-### 3. Install Laravel dependencies (first-time only)
-```bash
-docker run --rm -v $(pwd):/app -w /app php:8.2-cli \
-  bash -c "apt-get update && apt-get install -y unzip git curl zip && \
-  curl -sS https://getcomposer.org/installer | php && \
-  php composer.phar install"
-```
-Skip this if the vendor/ folder already exists
-
-### 4. Run Laravel
+### 3. Start the container
 ```bash
 docker compose up --build
 ```
+This will build the container and run Laravel on the port you set.
 Then open in your browser:
 ```bash
 http://localhost:{APP_PORT}
 ```
 Replace {APP_PORT} with the port you set in .env
+
+
+
+### 4. Install Laravel dependencies (first-time only)
+```bash
+docker compose exec app 
+composer install
+```
+This will install dependencies into the vendor/ directory
+Run this only once after cloning the project
 
 ### 5. Use Artisan commands
 ```bash
