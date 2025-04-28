@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/dasd', function () {
+    $xx = "xx";
+    $xpl = "xpl"
     return view('welcome');
 });
